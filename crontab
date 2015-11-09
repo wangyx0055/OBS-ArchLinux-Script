@@ -1,0 +1,5 @@
+0       *       *       *       * zsh /root/OBS-ArchLinux/_SCRIPT/bump-all.sh
+# fix broken package
+30      10      *       *       * zsh /root/OBS-ArchLinux/_SCRIPT/redown-vcs.sh
+# bump the  osc repo
+30      3       *       *       * zsh /root/OBS-ArchLinux/_SCRIPT/update.sh

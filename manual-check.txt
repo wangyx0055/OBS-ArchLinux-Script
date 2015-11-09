@@ -1,0 +1,8 @@
+wine-gaming-nine # modify build flags
+transmission-sequential-qt
+sstp-client-svn-stable
+libaacplus
+collada-dom-mitsuba
+framecounter
+
+aften dcaenc tsmuxer neroaacenc
