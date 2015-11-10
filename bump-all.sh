@@ -3,6 +3,8 @@ ESHELL=zsh
 _basedir=$(cd `dirname $0`;pwd)
 cd $_basedir/../
 
+ps -ef | grep bump-all | grep -v grep && exit 0
+
 ls -d */|grep -v _SCRIPT|sed 's:/::g'|while read line
 do
   echo $line
