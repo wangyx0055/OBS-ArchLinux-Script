@@ -17,6 +17,8 @@ do
         cd $basedir/../$line
         echo Package $line
         [[ z`osc results|grep broken` == z ]] || osc service remoterun $REPO $line
+        [[ z`osc results|grep scheduled` == z ]] || osc service remoterun $REPO $line
+        [[ z`osc results|grep blocked` == z ]] || osc service remoterun $REPO $line
     done
   ;;
   *)
@@ -32,7 +34,8 @@ do
         cd $basedir/../$line
         echo Package $line
         [[ z`osc results|grep broken` == z ]] || osc service remoterun $REPO $line
-        #[[ z`osc results|grep scheduled` == z ]] && echo skip || osc service remoterun $REPO $line
+        [[ z`osc results|grep scheduled` == z ]] || osc service remoterun $REPO $line
+        [[ z`osc results|grep blocked` == z ]] || osc service remoterun $REPO $line
       done
     done
   ;;
