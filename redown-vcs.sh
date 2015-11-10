@@ -14,7 +14,7 @@ do
     [[ z$nstatus == z ]] && continue
     ls | while read line
     do
-        cd $basedir/../$line
+        cd $basedir/$line
         echo Package $line
         [[ z`osc results|grep broken` == z ]] || osc service remoterun $REPO $line
         [[ z`osc results|grep scheduled` == z ]] || osc service remoterun $REPO $line
@@ -31,7 +31,7 @@ do
     do
       ls | grep -P "\-${vcs}$" | while read line
       do
-        cd $basedir/../$line
+        cd $basedir/$line
         echo Package $line
         [[ z`osc results|grep broken` == z ]] || osc service remoterun $REPO $line
         [[ z`osc results|grep scheduled` == z ]] || osc service remoterun $REPO $line
