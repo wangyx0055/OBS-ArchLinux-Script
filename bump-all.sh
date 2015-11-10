@@ -1,4 +1,5 @@
 #!/bin/sh
+ESHELL=zsh
 _basedir=$(cd `dirname $0`;pwd)
 cd $_basedir/../
 
@@ -42,7 +43,7 @@ do
     cd $basedir
     ls */bump.sh | while read line
     do
-      sh $line
+      $ESHELL $line
     done
   ;;
   *)
@@ -52,7 +53,7 @@ do
     echo $basedir
     ls */bump.sh | while read line
     do
-      sh $line
+      $ESHELL $line
     done
     
     for vcs in git svn hg bzr
