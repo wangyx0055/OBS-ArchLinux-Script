@@ -10,7 +10,7 @@ do
     basedir=$_basedir/../$line
     REPO="$line"
     cd $basedir
-    nstatus=`curl -s "https://build.opensuse.org/project/monitor/${REPO}?arch_x86_64=1&defaults=0&repo_${ARCH}=1&scheduled=1"|grep -oP "(?<=status'>)scheduled|broken"|head -1`
+    nstatus=`curl -s "https://build.opensuse.org/project/monitor/${REPO}?arch_x86_64=1&defaults=0&repo_${ARCH}=1"|grep -oP "(?<=status'>)broken|blocked|scheduled"|head -1`  #|blocked|scheduled
     [[ z$nstatus == z ]] && continue
     ls | while read line
     do
@@ -23,7 +23,7 @@ do
     basedir=$_basedir/../$line
     REPO="$line"
     cd $basedir
-    nstatus=`curl -s "https://build.opensuse.org/project/monitor/${REPO}?arch_x86_64=1&defaults=0&repo_${ARCH}=1&scheduled=1"|grep -oP "(?<=status'>)scheduled|broken"|head -1`
+    nstatus=`curl -s "https://build.opensuse.org/project/monitor/${REPO}?arch_x86_64=1&defaults=0&repo_${ARCH}=1"|grep -oP "(?<=status'>)broken|blocked|scheduled"|head -1`
     [[ z$nstatus == z ]] && continue
     for vcs in git svn hg bzr
     do
@@ -32,7 +32,7 @@ do
         cd $basedir/../$line
         echo Package $line
         [[ z`osc results|grep broken` == z ]] || osc service remoterun $REPO $line
-        [[ z`osc results|grep scheduled` == z ]] && echo skip || osc service remoterun $REPO $line
+        #[[ z`osc results|grep scheduled` == z ]] && echo skip || osc service remoterun $REPO $line
       done
     done
   ;;
