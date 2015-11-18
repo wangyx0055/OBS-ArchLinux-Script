@@ -5,4 +5,4 @@ libaacplus
 collada-dom-mitsuba
 framecounter
 
-aften dcaenc tsmuxer neroaacenc ttaenc
+aften dcaenc tsmuxer neroaacenc ttaenc uchardet
