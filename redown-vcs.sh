@@ -2,7 +2,7 @@
 _basedir=$(cd `dirname $0`;pwd)
 cd $_basedir/../
 ARCH=Arch_Extra
-SLEEP="sleep 10"
+SLEEP="10"
 if [ `ps -e | grep -c $(basename $0)` -gt 2 ]; then exit 0; fi
 
 ls -d */|grep -v _SCRIPT|sed 's:/::g'|while read line
@@ -16,7 +16,7 @@ do
     [[ z$nstatus == z ]] && continue
     ls | while read line
     do
-        $SLEEP
+        sleep $SLEEP
         cd $basedir/$line
         echo Package $line
         [[ z`osc results|grep broken` == z ]] || osc service remoterun $REPO $line
@@ -34,7 +34,7 @@ do
     do
       ls | grep -P "\-${vcs}$" | while read line
       do
-        $SLEEP
+        sleep $SLEEP
         cd $basedir/$line
         echo Package $line
         [[ z`osc results|grep broken` == z ]] || osc service remoterun $REPO $line
