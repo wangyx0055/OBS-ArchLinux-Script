@@ -3,7 +3,7 @@ _basedir=$(cd `dirname $0`;pwd)
 cd $_basedir/../
 ARCH=Arch_Extra
 
-ps -ef | grep redown-vcs | grep -v grep && exit 0
+if [ `ps -e | grep -c $(basename $0)` -gt 2 ]; then exit 0; fi
 
 ls -d */|grep -v _SCRIPT|sed 's:/::g'|while read line
 do

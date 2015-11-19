@@ -1,7 +1,7 @@
 #!/bin/sh
 basedir=$(cd `dirname $0`;pwd)
 
-ps -ef | grep update | grep -v grep && exit 0
+if [ `ps -e | grep -c $(basename $0)` -gt 2 ]; then exit 0; fi
 
 cd $basedir/../
 ls|grep -v _SCRIPT|while read line
