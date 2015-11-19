@@ -7,6 +7,7 @@ ps -ef | grep redown-vcs | grep -v grep && exit 0
 
 ls -d */|grep -v _SCRIPT|sed 's:/::g'|while read line
 do
+  sleep 10
   case $line in 
   "home:mazdlc:missing"|"home:mazdlc:multilib")
     basedir=$_basedir/../$line
