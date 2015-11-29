@@ -49,6 +49,12 @@ do
     done
   ;;
   *)
+    # do not try to bump when packages are blocked or scheduled
+    ARCH=Arch_Extra
+    CHKURL="https://build.opensuse.org/project/monitor/${line}?arch_x86_64=1&defaults=0&blocked=1&scheduled=1&repo_${ARCH}=1"
+    nstatus=`curl -s $CHKURL|grep -oP "(?<=${line}/)[a-z0-9-]+"|uniq`
+    [[ z$nstatus == z ]] || continue
+    
     basedir=$_basedir/../$line
     REPO="$line"
     cd $basedir
